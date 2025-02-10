@@ -1,11 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
+// src/app/store.ts
+import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from '../store/cartSlice';
+import apiReducer, { apiSlice } from '../store/apiSlice';
+import themeReducer from './themeSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    // Add your reducers here
+    cart: cartReducer,
+    [apiSlice.reducerPath]: apiReducer,
+    theme: themeReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export default store;
+
