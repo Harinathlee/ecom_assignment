@@ -18,7 +18,7 @@ const NavigationBar = () => {
     >
       <div className="container flex items-center justify-between mx-auto">
         <div className="flex items-center">
-          {location.pathname === '/profile' ? (
+          {(location.pathname === '/profile' || location.pathname === '/cart') ? (
             <Link to='/' className="flex items-center justify-center w-10 h-10 text-white bg-indigo-900 rounded-full" >
               <Home className="w-6 h-6 text-white" />
             </Link>
@@ -39,14 +39,25 @@ const NavigationBar = () => {
               <Sun className="w-6 h-6 text-yellow-500" />
             )}
           </button>
-          <Link to='/cart' className="flex items-center justify-center p-2 text-white bg-indigo-900 rounded-md" >
-            <ShoppingBag className="w-6 h-6 text-white" />
-            <h1
-              className={`ml-2 text-lg font-bold text-white`}
-            >
-              ${cart.totalValue}
-            </h1>
-          </Link>
+          {cart.totalValue > 0 ? (
+            <Link to='/cart' className="flex items-center justify-center p-2 text-white bg-indigo-900 rounded-md" >
+              <ShoppingBag className="w-6 h-6 text-white" />
+              <h1
+                className={`ml-2 text-lg font-bold text-white`}
+              >
+                ${cart.totalValue}
+              </h1>
+            </Link>
+          ) : (
+            <div className="flex items-center justify-center p-2 text-white bg-indigo-900 rounded-md cursor-not-allowed" >
+              <ShoppingBag className="w-6 h-6 text-white" />
+              <h1
+                className={`ml-2 text-lg font-bold text-white`}
+              >
+                ${cart.totalValue}
+              </h1>
+            </div>
+          )}
         </div>
       </div>
     </nav>

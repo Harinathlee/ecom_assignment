@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       className={`flex flex-col p-4 ${
         theme.theme === 'light'
           ? 'bg-white border border-gray-200 shadow-md shadow-slate-500'
-          : 'bg-gray-800 border border-gray-700 shadow-md shadow-slate-700'
+          : 'bg-gray-800 border border-gray-700 shadow-md shadow-slate-900'
       } rounded-lg transition duration-300 ease-in-out lg:w-1/4 md:w-1/2 sm:w-full xs:w-full h-96 m-4`}
     >
       <img src={product.image} alt={product.title} className="object-cover w-full h-64 rounded-t-lg" />

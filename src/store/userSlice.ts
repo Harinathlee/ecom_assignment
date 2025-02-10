@@ -1,7 +1,13 @@
+// userSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
+import { User } from '../types';
 
-const initialState = {
-  user: null,
+
+
+const initialState: User = {
+  name: '',
+  email: '',
+  phone: '',
 };
 
 const userSlice = createSlice({
@@ -9,10 +15,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.user = action.payload;
+      const { name, email, phone } = action.payload;
+      state = { name, email, phone };
     },
+   
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser  } = userSlice.actions;
 export default userSlice.reducer;

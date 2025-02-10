@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from '../store/cartSlice';
 import apiReducer, { apiSlice } from '../store/apiSlice';
 import themeReducer from './themeSlice';
+import userReducer from './userSlice';
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     [apiSlice.reducerPath]: apiReducer,
     theme: themeReducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

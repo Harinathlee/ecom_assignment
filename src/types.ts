@@ -5,3 +5,9 @@ export interface Product {
     price: number;
     image: string;
   }
+
+  export interface User {
+    name: string ;
+    email: string;
+    phone: string;
+  }
